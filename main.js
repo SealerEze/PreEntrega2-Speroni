@@ -1,27 +1,45 @@
+// Definimos un objeto que representa el kiosko
+const kiosko = {
+    nombre: "Mi Kiosko",
+    articulos: [
+      { nombre: "Gaseosa", precio: 500 },
+      { nombre: "Papas fritas", precio: 350 },
+      { nombre: "Chicles", precio: 150 },
+      { nombre: "Cigarrillos", precio: 700 },
+      { nombre: "Sandwich", precio: 620 },
+      { nombre: "Alfajor", precio: 300 },
+      { nombre: "Galletitas", precio: 315 }
+    ]
+  };
+  
+  // Función que muestra los artículos a la venta
+  function mostrarArticulos() {
+    let mensaje = "Artículos que vendemos:\n";
+    kiosko.articulos.forEach((articulo, index) => {
+      mensaje += (index+1) + ". " + articulo.nombre + " - $" + articulo.precio + "\n";
+    });
+    alert(mensaje);
+  }
+  
+  // Función que hace la venta de un artículo
+  function hacerVenta() {
+    let total = 0;
+    let mensaje = "Resumen de venta:\n";
+    const opcion = prompt("Ingrese el número de lo que desea comprar (1-" + kiosko.articulos.length + "):");
+    const articulo = kiosko.articulos[opcion-1];
+    const cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar:"));
+    total = articulo.precio * cantidad;
+    mensaje += "- Artículo: " + articulo.nombre + "\n";
+    mensaje += "- Cantidad: " + cantidad + "\n";
+    mensaje += "- Precio c/u: $" + articulo.precio + "\n";
+    mensaje += "- Total: $" + total + "\n";
+    mensaje += "¡Gracias por su compra!";
+    alert(mensaje);
+  }
+  
 
-function turnera() {
-
-
-    let turno = 0;
-
-    while (turno < 16) {
-
-        //pido los datos del usuario
-        let nombre = prompt("Dejanos tu nombre");
-        let apellido = prompt("Y ahora tu apellido");
-
-        //defino la espera de cada turno
-        let espera = (turno) * 30;
-
-        //devuelvo al usuario sus datos, el numero de turno y la espera estimada
-        alert("Turno " + (turno + 1) + " de 16 para el Sr/a " + nombre + " " + apellido + " Con un tiempo de espera estimado de ≈" + espera + " minutos.");
-
-        //sumo 1 al numero de turno para la siguiente iteracion.
-        turno += 1;
-    }
-}
-
-
-//Llamamos a la funcion 
-turnera();
-
+  // Mostramos los artículos disponibles
+  mostrarArticulos();
+  
+  // Realizamos la venta de un artículo
+  hacerVenta();
